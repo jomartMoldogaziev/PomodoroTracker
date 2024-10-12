@@ -1,0 +1,20 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+   
+  }
+  
+  .navbar button {
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #3f83e7;
+    color: rgb(30, 233, 23);
+  }
+  
+  .navbar button:hover {
+    background-color: #3700b3; 
+  }
+  
