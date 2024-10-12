@@ -155,7 +155,8 @@ const Timer = ({ initialWorkTime = 25, initialRestTime = 5, initialLongRestTime 
                 />
             </div>
 
-            <MusicPlayer />
+            {!isWorking && <MusicPlayer />}
+            {isWorking && <MusicPlayer />}
 
             <button className="timer-button" onClick={startTimer} disabled={isRunning}>
                 Старт
