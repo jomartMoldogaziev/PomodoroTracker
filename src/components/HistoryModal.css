@@ -28,4 +28,9 @@
     font-size: 20px;
     cursor: pointer;
   }
-  
+  @media (max-width: 480px) {
+    .modal-content {
+      width: 100%; /* Ширина модального окна на всю ширину экрана */
+      max-width: 300px;
+  }
+  }

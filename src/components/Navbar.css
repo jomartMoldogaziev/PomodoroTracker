@@ -17,4 +17,9 @@
   .navbar button:hover {
     background-color: #3700b3; 
   }
-  
+  @media (max-width: 480px) {
+    .navbar button {
+      width: 100%;
+      margin-bottom: 10px; /* Отделяем кнопки друг от друга */
+  }
+  }

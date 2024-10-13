@@ -88,39 +88,51 @@
   
   
  
-@media (max-width: 768px) {
-  .timer-container {
-    padding: 20px; 
-  }
+  @media (max-width: 768px) {
+    .timer-container {
+        padding: 20px;
+        max-width: 100%; /* Убираем ограничение ширины */
+        margin-top: 10px; /* Уменьшаем отступ сверху */
+    }
 
-  .time-display {
-    font-size: 5em;
-  }
+    .time-display {
+        font-size: 5em;
+    }
 
-  h1 {
-    font-size: 2em;
-  }
+    h1 {
+        font-size: 2em;
+    }
 
-  button {
-    padding: 8px 16px;
-    font-size: 1em; 
-  }
+    button {
+        padding: 8px 16px;
+        font-size: 1em;
+    }
 }
 
+/* Адаптивные стили для мобильных устройств */
 @media (max-width: 480px) {
-  .time-display {
-    font-size: 4em; 
-  }
+    .timer-container {
+        padding: 15px;
+        max-width: 100%; /* Полная ширина */
+        margin-top: 0; /* Убираем отступ сверху */
+        box-shadow: none; /* Убираем тень для мобильных устройств */
+        border-radius: 5%; /* Уменьшаем радиус скругления */
+    }
 
-  h1 {
-    font-size: 2.5em;
-  }
+    .time-display {
+        font-size: 4em; /* Уменьшаем размер шрифта таймера */
+    }
 
-  button {
-    width: 50%; 
+    h1 {
+        font-size: 2em;
+    }
+
+    button {
+        padding: 8px;
+        width: 100%; /* Кнопки занимают всю ширину */
+        font-size: 14px; /* Уменьшаем размер текста на кнопках */
+    }
+    .progress-bar {
+      width: 100%; /* Прогресс-бар на всю ширину экрана */
   }
-  .timer-container{
-    margin-top: -50px;
   }
-}
-  
