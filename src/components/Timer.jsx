@@ -21,17 +21,26 @@ const Timer = ({ initialWorkTime = 25, initialRestTime = 5, initialLongRestTime 
     const [showHistoryModal, setShowHistoryModal] = useState(false);
     const [bgPosition, setBgPosition] = useState({ x: 0, y: 0 });
 
+    // Загрузка истории из localStorage при монтировании компонента
     useEffect(() => {
-        const handleMouseMove = (event) => {
-            const x = (event.clientX / window.innerWidth) * 100;
-            const y = (event.clientY / window.innerHeight) * 100;
-            setBgPosition({ x, y });
-        };
+        const storedHistory = JSON.parse(localStorage.getItem('cycleHistory')) || [];
+        setCycleHistory(storedHistory);
+    }, []);
 
-        window.addEventListener("mousemove", handleMouseMove);
+    // Обработчик для обновления позиции фона при движении мыши
+    const handleMouseMove = (event) => {
+        const { clientX, clientY } = event;
+        const { innerWidth, innerHeight } = window;
+        const x = Math.round((clientX / innerWidth) * 100);
+        const y = Math.round((clientY / innerHeight) * 100);
+        setBgPosition({ x, y });
+    };
 
+    // Добавляем обработчик события при монтировании компонента
+    useEffect(() => {
+        window.addEventListener('mousemove', handleMouseMove);
         return () => {
-            window.removeEventListener("mousemove", handleMouseMove);
+            window.removeEventListener('mousemove', handleMouseMove);
         };
     }, []);
 
@@ -40,22 +49,40 @@ const Timer = ({ initialWorkTime = 25, initialRestTime = 5, initialLongRestTime 
         audio.play();
     };
 
+    const saveCycleHistory = (cycleData) => {
+        const currentHistory = JSON.parse(localStorage.getItem('cycleHistory')) || [];
+        currentHistory.push(cycleData);
+        localStorage.setItem('cycleHistory', JSON.stringify(currentHistory));
+    };
+
     const handleTimerComplete = useCallback(() => {
         playSound();
-        if (isWorking) {
-            setCycleCount((prev) => prev + 1);
-            setTimeLeft((cycleCount + 1) % 4 === 0 ? longRestTime * 60 : restTime * 60);
-        } else {
-            setTimeLeft(workTime * 60);
-        }
+        const newCycleCount = cycleCount + 1;
+        setCycleCount(newCycleCount);
+        
+        // Устанавливаем время на перерыв или рабочий цикл
+        const nextTimeLeft = newCycleCount % 4 === 0 
+            ? longRestTime * 60 
+            : restTime * 60;
 
-        setIsWorking(!isWorking);
-        setCycleHistory((prev) => [
-            ...prev,
-            { cycle: cycleCount + 1, type: isWorking ? 'Работа' : 'Отдых', time: new Date().toLocaleTimeString() },
-        ]);
-        setIsRunning(false);
-    }, [isWorking, cycleCount, longRestTime, restTime, workTime]);
+        setTimeLeft(nextTimeLeft);
+        setIsWorking(!isWorking); // Переключаем состояние работы/отдыха
+        
+        const cycleData = {
+            cycle: newCycleCount,
+            type: isWorking ? 'Работа' : 'Отдых',
+            time: new Date().toLocaleTimeString(),
+        };
+        
+        setCycleHistory((prev) => {
+            const updatedHistory = [...prev, cycleData];
+            saveCycleHistory(cycleData); // Сохранение в localStorage
+            return updatedHistory;
+        });
+
+        // Автозапуск таймера после завершения текущего цикла
+        setIsRunning(true); 
+    }, [isWorking, cycleCount, longRestTime, restTime]);
 
     useEffect(() => {
         let timer = null;
@@ -155,8 +182,7 @@ const Timer = ({ initialWorkTime = 25, initialRestTime = 5, initialLongRestTime 
                 />
             </div>
 
-            {!isWorking && <MusicPlayer />}
-            {isWorking && <MusicPlayer />}
+            <MusicPlayer />
 
             <button className="timer-button" onClick={startTimer} disabled={isRunning}>
                 Старт

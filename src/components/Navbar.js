@@ -1,8 +1,9 @@
+// src/components/Navbar.js
 import React from "react";
 import './Navbar.css';
 
 const Navbar = ({ onSettingsClick, onHistoryClick, showHistory }) => {
-
+  // Открыть новое окно с историей
  
 
   return (

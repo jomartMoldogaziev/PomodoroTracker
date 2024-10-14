@@ -1,35 +1,39 @@
 /* src/App.css */
 body{
+  background-image: url(C:\Users\User\Desktop\Картинки\3.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   margin: 0;
   padding: 0;
 }
 .App {
-    text-align: center;
-    font-family: 'Arial', sans-serif;
-    background-color: #490101;
-    min-height: 190vh;
-    min-width: 140vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* justify-content: center; */
-    
-    padding: 0px;
-    color: #333;
-  }
+  text-align: center;
+  font-family: 'Arial', sans-serif;
   
-  h1 {
-    font-size: 2.5em;
-   padding: 30px;
-    color: #54e45b;
-  }
-  
-  h2 {
-    font-size: 2em;
-    color: #f0efef;
-  }
-  
- /* From Uiverse.io by SteveBloX */ 
+  min-height: 100vh; /* Изменено для адаптивности */ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Добавлено для центрирования */
+  padding: 0px;
+  color: #333;
+}
+
+h1 {
+  font-size: 2.5em;
+  padding: 30px;
+  color: #ffffff;
+  margin-top: -150px;
+  text-shadow: 0px 5px 5px #310202;
+}
+
+h2 {
+  font-size: 2em;
+  color: #f0efef;
+}
+
+/* From Uiverse.io by SteveBloX */
 /* From Uiverse.io by mrhyddenn */ 
 button {
   position: relative;
@@ -44,24 +48,17 @@ button {
   color: #fff;
   overflow: hidden;
   box-shadow: 0 0 0 0 transparent;
-  -webkit-transition: all 0.2s ease-in;
-  -moz-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
   cursor: pointer;
- 
 }
 
 button:hover {
   background: rgb(61, 106, 255);
   box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
 
 button:hover::before {
-  -webkit-animation: sh02 0.5s 0s linear;
-  -moz-animation: sh02 0.5s 0s linear;
   animation: sh02 0.5s 0s linear;
 }
 
@@ -76,10 +73,6 @@ button::before {
   opacity: 0;
   background: #fff;
   box-shadow: 0 0 50px 30px #fff;
-  -webkit-transform: skewX(-20deg);
-  -moz-transform: skewX(-20deg);
-  -ms-transform: skewX(-20deg);
-  -o-transform: skewX(-20deg);
   transform: skewX(-20deg);
 }
 
@@ -88,11 +81,9 @@ button::before {
     opacity: 0;
     left: 0%;
   }
-
   50% {
     opacity: 1;
   }
-
   to {
     opacity: 0;
     left: 100%;
@@ -101,48 +92,107 @@ button::before {
 
 button:active {
   box-shadow: 0 0 0 0 transparent;
-  -webkit-transition: box-shadow 0.2s ease-in;
-  -moz-transition: box-shadow 0.2s ease-in;
-  transition: box-shadow 0.2s ease-in;
 }
 
+button:disabled {
+  background-color: #910606;
+  cursor: not-allowed;
+}
 
-  
-  button:disabled {
-    background-color: #910606;
-    cursor: not-allowed;
+.timer-container {
+  background-color: rgb(245, 19, 19);
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  margin: 1px;
+  width: 100%; /* Установлено на 100% для адаптивности */
+  max-width: 500px; /* Максимальная ширина для больших экранов */
+  box-shadow: 0px 0px 30px 1px rgb(65, 238, 12);
+  margin-top: -20px;
+}
+
+.timer-display {
+  font-size: 7em;
+  color: #fdfbfb;
+  height: 50px;
+  margin-top: -100px;
+}
+
+.track-select-container {
+  margin: 20px 0;
+}
+
+label {
+  font-size: 1.1em;
+  color: #333;
+}
+
+select {
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+/* Медиа-запросы для улучшения адаптивности */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2em; /* Меньший размер заголовка на мобильных */
   }
-  
-  .timer-container {
-    background-color: rgb(245, 19, 19);
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 30px;
-    width: 500px;
-    box-shadow: 0px 0px 30px 1px rgb(65, 238, 12);
-    margin-top: 20px;
+  h2 {
+    font-size: 1.5em; /* Меньший размер заголовка на мобильных */
   }
-  
+  button {
+    font-size: 12px; /* Меньший размер шрифта для кнопок на мобильных */
+  }
   .timer-display {
-    font-size: 7em;
-    color: #fdfbfb;
-    height: 50px;
-    margin-top: -100px;
+    font-size: 5em; /* Меньший размер таймера на мобильных */
   }
-  
-  .track-select-container {
-    margin: 20px 0;
+}
+
+@media (max-width: 480px) {
+  .timer-display {
+    font-size: 1em; /* Дополнительное уменьшение шрифта для таймера на маленьких экранах */
   }
-  
-  label {
-    font-size: 1.1em;
+  body{
+    margin: 25px;
+   
+  }
+  h1 {
+    font-size: 1.5em;
+    padding: 30px;
+    color: #54e45b;
+    margin-top: -40px;
+  }
+  .timer-container {
+    margin-top: -20px;
+    
+  }
+  button {
+    position: relative;
+    padding: 5px 10px;
+    border-radius: 7px;
+    border: 1px solid rgb(109, 248, 44);
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background-color: rgb(3, 36, 182);
+    color: #fff;
+    overflow: hidden;
+    box-shadow: 0 0 0 0 transparent;
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+  }
+  .App {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    
+    min-height: 60vh; /* Изменено для адаптивности */ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Добавлено для центрирования */
+    padding: 0px;
     color: #333;
   }
-  
-  select {
-    margin-left: 10px;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-  }
-  
+}
