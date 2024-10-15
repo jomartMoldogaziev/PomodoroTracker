@@ -3,10 +3,10 @@
   border: 1px solid #ddd;
   border-radius: 40px !important;
   padding: 30px;
-  width: 100%; /* Занимает 100% ширины */
-  max-width: 600px; /* Максимальная ширина для больших экранов */
+  width: 100%; 
+  max-width: 600px; 
   box-shadow: 0px 0px 14px 1px rgb(122, 221, 30);
-  margin: auto; /* Центрирование контейнера */
+  margin: auto;
   position: relative;
   transition: background 0.1s ease;
   margin-top: 20px;
@@ -81,22 +81,22 @@ button {
 
 @media (max-width: 768px) {
   .timer-container {
-    padding: 20px; /* Уменьшение отступов для мобильных */
-    width: 90%; /* Занимает 90% ширины */
+    padding: 20px; 
+    width: 90%; 
   }
 
   .timer-display {
-    font-size: 5em; /* Меньший размер шрифта на мобильных */
+    font-size: 5em; 
   }
 }
 
 @media (max-width: 480px) {
   .timer-display {
-    font-size: 4em; /* Дополнительное уменьшение шрифта для маленьких экранов */
+    font-size: 4em;
   }
   .timer-container {
-    padding: 10px; /* Уменьшение отступов для мобильных */
-    width: 50%; /* Занимает 90% ширины */
+    padding: 10px; 
+    width: 50%;
     
   }
 }

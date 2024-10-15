@@ -11,11 +11,11 @@ body{
   text-align: center;
   font-family: 'Arial', sans-serif;
   
-  min-height: 100vh; /* Изменено для адаптивности */ 
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Добавлено для центрирования */
+  justify-content: center; 
   padding: 0px;
   color: #333;
 }
@@ -33,8 +33,6 @@ h2 {
   color: #f0efef;
 }
 
-/* From Uiverse.io by SteveBloX */
-/* From Uiverse.io by mrhyddenn */ 
 button {
   position: relative;
   padding: 10px 20px;
@@ -104,8 +102,8 @@ button:disabled {
   border: 1px solid #ddd;
   border-radius: 20px;
   margin: 1px;
-  width: 100%; /* Установлено на 100% для адаптивности */
-  max-width: 500px; /* Максимальная ширина для больших экранов */
+  width: 100%;
+  max-width: 500px;
   box-shadow: 0px 0px 30px 1px rgb(65, 238, 12);
   margin-top: -20px;
 }
@@ -133,25 +131,24 @@ select {
   border: 1px solid #ddd;
 }
 
-/* Медиа-запросы для улучшения адаптивности */
 @media (max-width: 768px) {
   h1 {
-    font-size: 2em; /* Меньший размер заголовка на мобильных */
+    font-size: 2em; 
   }
   h2 {
-    font-size: 1.5em; /* Меньший размер заголовка на мобильных */
+    font-size: 1.5em;
   }
   button {
-    font-size: 12px; /* Меньший размер шрифта для кнопок на мобильных */
+    font-size: 12px;
   }
   .timer-display {
-    font-size: 5em; /* Меньший размер таймера на мобильных */
+    font-size: 5em; 
   }
 }
 
 @media (max-width: 480px) {
   .timer-display {
-    font-size: 1em; /* Дополнительное уменьшение шрифта для таймера на маленьких экранах */
+    font-size: 1em; 
   }
   body{
     margin: 25px;
@@ -187,11 +184,11 @@ select {
     text-align: center;
     font-family: 'Arial', sans-serif;
     
-    min-height: 60vh; /* Изменено для адаптивности */ 
+    min-height: 60vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Добавлено для центрирования */
+    justify-content: center;
     padding: 0px;
     color: #333;
   }

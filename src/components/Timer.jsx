@@ -21,13 +21,11 @@ const Timer = ({ initialWorkTime = 25, initialRestTime = 5, initialLongRestTime 
     const [showHistoryModal, setShowHistoryModal] = useState(false);
     const [bgPosition, setBgPosition] = useState({ x: 0, y: 0 });
 
-    // Загрузка истории из localStorage при монтировании компонента
     useEffect(() => {
         const storedHistory = JSON.parse(localStorage.getItem('cycleHistory')) || [];
         setCycleHistory(storedHistory);
     }, []);
 
-    // Обработчик для обновления позиции фона при движении мыши
     const handleMouseMove = (event) => {
         const { clientX, clientY } = event;
         const { innerWidth, innerHeight } = window;
@@ -36,7 +34,6 @@ const Timer = ({ initialWorkTime = 25, initialRestTime = 5, initialLongRestTime 
         setBgPosition({ x, y });
     };
 
-    // Добавляем обработчик события при монтировании компонента
     useEffect(() => {
         window.addEventListener('mousemove', handleMouseMove);
         return () => {
@@ -60,13 +57,12 @@ const Timer = ({ initialWorkTime = 25, initialRestTime = 5, initialLongRestTime 
         const newCycleCount = cycleCount + 1;
         setCycleCount(newCycleCount);
         
-        // Устанавливаем время на перерыв или рабочий цикл
         const nextTimeLeft = newCycleCount % 4 === 0 
             ? longRestTime * 60 
             : restTime * 60;
 
         setTimeLeft(nextTimeLeft);
-        setIsWorking(!isWorking); // Переключаем состояние работы/отдыха
+        setIsWorking(!isWorking);
         
         const cycleData = {
             cycle: newCycleCount,
@@ -76,11 +72,10 @@ const Timer = ({ initialWorkTime = 25, initialRestTime = 5, initialLongRestTime 
         
         setCycleHistory((prev) => {
             const updatedHistory = [...prev, cycleData];
-            saveCycleHistory(cycleData); // Сохранение в localStorage
+            saveCycleHistory(cycleData); 
             return updatedHistory;
         });
 
-        // Автозапуск таймера после завершения текущего цикла
         setIsRunning(true); 
     }, [isWorking, cycleCount, longRestTime, restTime]);
 
